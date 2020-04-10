@@ -1,0 +1,28 @@
+{
+  "name": "sensor-net-middleware",
+  "version": "1.0.0",
+  "description": "Middleware for the Sensor-Net project.",
+  "main": "bld/index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.9.0",
+    "@babel/preset-env": "^7.9.5",
+    "jasmine": "^3.5.0"
+  },
+  "scripts": {
+    "test": "npm run build; npm run build_test; node bld_test/run_jasmine.js",
+    "build": "rm -r ./bld; babel src -d bld",
+    "build_test": "rm -r ./bld_test; babel src_test -d bld_test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hannes-hochreiner/sensor-net-middleware.git"
+  },
+  "author": "Hannes Hochreiner <hannes@hochreiner.net>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hannes-hochreiner/sensor-net-middleware/issues"
+  },
+  "homepage": "https://github.com/hannes-hochreiner/sensor-net-middleware#readme"
+}
