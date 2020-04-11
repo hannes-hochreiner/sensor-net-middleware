@@ -20,8 +20,8 @@ export class MessageProcessor {
           {
             sensorId: this._padLeft(message.readUInt16LE(2).toString(16), 4),
             parameters: {
-              temperature: message.readFloatLE(20),
-              relativeHumidity: message.readFloatLE(24)
+              temperature: {value: message.readFloatLE(20), unit: '°C'},
+              relativeHumidity: {value: message.readFloatLE(24), unit: '%'}
             }
           }
         ];
@@ -33,9 +33,9 @@ export class MessageProcessor {
           {
             sensorId: this._padLeft(message.readUInt16LE(2).toString(16), 4),
             parameters: {
-              temperature: message.readFloatLE(20),
-              relativeHumidity: message.readFloatLE(24),
-              pressure: message.readFloatLE(28)
+              temperature: {value: message.readFloatLE(20), unit: '°C'},
+              relativeHumidity: {value: message.readFloatLE(24), unit: '%'},
+              pressure: {value: message.readFloatLE(28), unit: 'mbar'}
             }
           }
         ];

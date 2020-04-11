@@ -36,8 +36,10 @@ describe('MessageProcessor', () => {
     expect(msg.index).toEqual(23420);
     expect(msg.measurements.length).toEqual(1);
     expect(msg.measurements[0].sensorId).toEqual('000a');
-    expect(msg.measurements[0].parameters.temperature).toBeCloseTo(18.23124);
-    expect(msg.measurements[0].parameters.relativeHumidity).toBeCloseTo(57.21341);
+    expect(msg.measurements[0].parameters.temperature.value).toBeCloseTo(18.23124);
+    expect(msg.measurements[0].parameters.temperature.unit).toEqual('°C');
+    expect(msg.measurements[0].parameters.relativeHumidity.value).toBeCloseTo(57.21341);
+    expect(msg.measurements[0].parameters.relativeHumidity.unit).toEqual('%');
   });
 
   it('should be able to process a type 1 message', () => {
@@ -60,8 +62,11 @@ describe('MessageProcessor', () => {
     expect(msg.index).toEqual(23420);
     expect(msg.measurements.length).toEqual(1);
     expect(msg.measurements[0].sensorId).toEqual('a001');
-    expect(msg.measurements[0].parameters.temperature).toBeCloseTo(18.23124);
-    expect(msg.measurements[0].parameters.relativeHumidity).toBeCloseTo(57.21341);
-    expect(msg.measurements[0].parameters.pressure).toBeCloseTo(1020.12311);
+    expect(msg.measurements[0].parameters.temperature.value).toBeCloseTo(18.23124);
+    expect(msg.measurements[0].parameters.temperature.unit).toEqual('°C');
+    expect(msg.measurements[0].parameters.relativeHumidity.value).toBeCloseTo(57.21341);
+    expect(msg.measurements[0].parameters.relativeHumidity.unit).toEqual('%');
+    expect(msg.measurements[0].parameters.pressure.value).toBeCloseTo(1020.12311);
+    expect(msg.measurements[0].parameters.pressure.unit).toEqual('mbar');
   });
 });
