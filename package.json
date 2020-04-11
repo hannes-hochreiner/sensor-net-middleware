@@ -3,7 +3,13 @@
   "version": "1.0.0",
   "description": "Middleware for the Sensor-Net project.",
   "main": "bld/index.js",
-  "dependencies": {},
+  "bin": {
+    "rawdatad": "bld/binRawDataDaemon.js"
+  },
+  "dependencies": {
+    "@serialport/parser-readline": "^8.0.6",
+    "serialport": "^8.0.7"
+  },
   "devDependencies": {
     "@babel/cli": "^7.8.4",
     "@babel/core": "^7.9.0",
@@ -13,7 +19,8 @@
   "scripts": {
     "test": "npm run build; npm run build_test; node bld_test/run_jasmine.js",
     "build": "rm -r ./bld; babel src -d bld",
-    "build_test": "rm -r ./bld_test; babel src_test -d bld_test"
+    "build_test": "rm -r ./bld_test; babel src_test -d bld_test",
+    "clear": "rm -r ./node_modules"
   },
   "repository": {
     "type": "git",
