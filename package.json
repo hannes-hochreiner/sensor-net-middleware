@@ -21,7 +21,6 @@
     "build": "rm -r ./bld; babel src -d bld",
     "build_test": "rm -r ./bld_test; babel src_test -d bld_test",
     "clear": "rm -r ./node_modules",
-    "prepublish": "npm run build",
     "prepare": "npm run build"
   },
   "repository": {
