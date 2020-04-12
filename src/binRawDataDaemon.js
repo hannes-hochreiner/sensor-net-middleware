@@ -33,7 +33,7 @@ async function processData(data) {
       timestamp: (new Date()).toISOString(),
       message: messageProcessor.processMessage(plain)
     }
-    console.log(msg);
+    console.dir(msg, {depth: 10});
     await sock.send(['sensor-net/data', msg]);
   } catch (error) {
     console.log(data);
