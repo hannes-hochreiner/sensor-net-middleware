@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "Middleware for the Sensor-Net project.",
   "main": "bld/index.js",
+  "bin": {
+    "rawdatad": "bld/binRawDataDaemon.js"
+  },
   "dependencies": {
     "@serialport/parser-readline": "^8.0.6",
     "serialport": "^8.0.7",
