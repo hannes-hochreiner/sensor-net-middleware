@@ -18,7 +18,7 @@ const key = process.env.SENSOR_NET_KEY;
 const socket = process.env.ZEROMQ_SOCKET;
 
 async function init() {
-  await sock.bind(socket)
+  await sock.bind(socket);
   console.log(`Raw Data Daemon bound to socket "${socket}".`);
   parser.on('data', processData);
 }
