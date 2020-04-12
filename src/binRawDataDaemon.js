@@ -3,7 +3,7 @@
 import * as crypto from 'crypto';
 import {default as SerialPort} from 'serialport';
 import {default as Readline} from '@serialport/parser-readline';
-import {default as zmq} from 'zeromq';
+import {Publisher} from 'zeromq';
 import {DataDecoder} from './dataDecoder';
 import {MessageProcessor} from './messageProcessor';
 
@@ -13,7 +13,7 @@ const port = new SerialPort('/dev/ttyUSB0', {
 const parser = port.pipe(new Readline());
 const dataDecoder = new DataDecoder(crypto);
 const messageProcessor = new MessageProcessor();
-const sock = new zmq.Publisher();
+const sock = new Publisher();
 const key = process.env.SENSOR_NET_KEY;
 const socket = process.env.ZEROMQ_SOCKET;
 
