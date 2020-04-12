@@ -15,7 +15,7 @@ You may need to add the option "--unsafe-perm".
 The middleware package contains a binary called "rawdatad".
 It expects the Sensor Net decryption key to be supplied as the environment variable "SENSOR_NET_KEY".
 ```shell
-SENSOR_NET_KEY=<secret key> rawdatad
+SENSOR_NET_KEY=<secret key> ZEROMQ_SOCKET=tcp://127.0.0.1:3000 rawdatad
 ```
 
 # Troubleshooting
