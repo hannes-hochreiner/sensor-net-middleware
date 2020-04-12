@@ -20,7 +20,7 @@ const socket = process.env.ZEROMQ_SOCKET;
 async function init() {
   await sock.bind(socket)
   console.log(`Raw Data Daemon bound to socket "${socket}".`);
-  parser.on('data', data => processData);
+  parser.on('data', processData);
 }
 
 async function processData(data) {
