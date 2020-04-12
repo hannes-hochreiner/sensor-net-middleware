@@ -3,6 +3,7 @@
 import * as crypto from 'crypto';
 import {default as SerialPort} from 'serialport';
 import {default as Readline} from '@serialport/parser-readline';
+import {default as zmq} from 'zeromq';
 import {DataDecoder} from './dataDecoder';
 import {MessageProcessor} from './messageProcessor';
 
@@ -12,12 +13,20 @@ const port = new SerialPort('/dev/ttyUSB0', {
 const parser = port.pipe(new Readline());
 const dataDecoder = new DataDecoder(crypto);
 const messageProcessor = new MessageProcessor();
+const sock = new zmq.Publisher();
 const key = process.env.SENSOR_NET_KEY;
+const socket = process.env.ZEROMQ_SOCKET;
 
-parser.on('data', data => {
+async function init() {
+  await sock.bind(socket)
+  console.log(`Raw Data Daemon bound to socket "${socket}".`);
+  parser.on('data', data => processData);
+}
+
+async function processData(data) {
   try {
     let dt = JSON.parse(data);
-    const plain = dataDecoder.decryptHex(dt.data, key);
+    const plain = dataDecoder.decodeHex(dt.data, key);
     let msg = {
       type: dt.type,
       rssi: dt.rssi,
@@ -25,8 +34,11 @@ parser.on('data', data => {
       message: messageProcessor.processMessage(plain)
     }
     console.log(msg);
+    await sock.send(['sensor-net/data', msg]);
   } catch (error) {
     console.log(data);
     console.log(error);
   }
-});
+}
+
+init();
