@@ -5,7 +5,7 @@
   "main": "bld/index.js",
   "bin": {
     "rawdatad": "bld/binRawDataDaemon.js",
-    "ingresd": "bld/binIngresDaemon.js"
+    "ingressd": "bld/binIngressDaemon.js"
   },
   "dependencies": {
     "@serialport/parser-readline": "^8.0.6",

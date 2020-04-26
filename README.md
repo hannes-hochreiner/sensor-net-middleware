@@ -19,11 +19,11 @@ It expects the Sensor Net decryption key to be supplied as the environment varia
 ```shell
 SENSOR_NET_KEY=<secret key> ZEROMQ_SOCKET=tcp://127.0.0.1:3000 rawdatad
 ```
-### ingresd
-The Ingres Daemon subscribes to the zeromq queue and forwards the messages to the database.
+### ingressd
+The Ingress Daemon subscribes to the zeromq queue and forwards the messages to the database.
 To be able to use the Sensor Net back end API, it gets an access token from Auth0.
 It gets new tokens as required.
-The Ingres Daemon expects the following environment variables to be set:
+The Ingress Daemon expects the following environment variables to be set:
   * ZEROMQ_SOCKET (optional, default: "tcp://127.0.0.1:3000")
   * ZEROMQ_TOPIC (optional, default: "sensor-net/data")
   * AUTH0_TENANT
