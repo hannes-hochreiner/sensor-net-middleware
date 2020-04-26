@@ -30,7 +30,7 @@ async function init() {
         headers: {
           authorization: await tokenProvider.getAuthenticationHeader(conf)
         },
-        data: msg
+        data: JSON.parse(msg)
       });
       console.log('sent message');
     } catch(error) {

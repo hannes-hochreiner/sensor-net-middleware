@@ -34,7 +34,7 @@ async function processData(data) {
       message: messageProcessor.processMessage(plain)
     }
     console.dir(msg, {depth: 10});
-    await sock.send(['sensor-net/data', msg]);
+    await sock.send(['sensor-net/data', JSON.stringify(msg)]);
   } catch (error) {
     console.log(data);
     console.log(error);
