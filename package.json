@@ -4,10 +4,12 @@
   "description": "Middleware for the Sensor-Net project.",
   "main": "bld/index.js",
   "bin": {
-    "rawdatad": "bld/binRawDataDaemon.js"
+    "rawdatad": "bld/binRawDataDaemon.js",
+    "ingresd": "bld/binIngresDaemon.js"
   },
   "dependencies": {
     "@serialport/parser-readline": "^8.0.6",
+    "axios": "^0.19.2",
     "serialport": "^8.0.7",
     "zeromq": "^6.0.0-beta.6"
   },
